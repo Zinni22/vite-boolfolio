@@ -1,26 +1,18 @@
 <script>
-import axios from 'axios';
+import ProjectCard from './ProjectCard.vue';
 
 export default {
 name: 'MainApp',
 
   data () {
       return{
-        projects: []
       }
   },
-  created(){
-    axios
-    .get('http://127.0.0.1:8000/api/project')
-    .then(response => {
-        console.log(response.data.projects);
 
-        this.projects = response.data.projects;
-
-    })
+  components:{
+    ProjectCard,
   },
 
-  components:{},
   methods:{},
 
 }
@@ -30,10 +22,30 @@ name: 'MainApp',
 
     <main>
         <h1>Boolfolio</h1>
+
+        <div class="container">
+            <ProjectCard />
+        </div>
+
     </main>
  
 </template>
 
 <style lang="scss" scoped>
 
+main{
+    padding: 50px;
+    text-align: center;
+
+    h1{
+        margin-bottom: 50px;
+    }
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+}
 </style>
